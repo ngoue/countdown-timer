@@ -8,9 +8,9 @@ const endTime = dayjs("2024-02-16T11:00:00-0700");
 export default function Home() {
   const [now, setNow] = useState<Dayjs>();
 
-  const hours = endTime?.diff(now, "hours");
-  const minutes = endTime?.diff(now, "minutes") - hours * 60;
-  const seconds = endTime?.diff(now, "seconds") - hours * 3600 - minutes * 60;
+  const hours = Math.max(endTime?.diff(now, "hours"), 0);
+  const minutes = Math.max(endTime?.diff(now, "minutes") - hours * 60, 0);
+  const seconds = Math.max(endTime?.diff(now, "seconds") - hours * 3600 - minutes * 60, 0);
 
   useEffect(() => {
     setInterval(() => {
