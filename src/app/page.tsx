@@ -16,9 +16,10 @@ export default function Home() {
   );
 
   useEffect(() => {
-    setInterval(() => {
+    const interval = setInterval(() => {
       const now = dayjs();
       if (now > endTime) {
+        clearInterval(interval);
         window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
       } else {
         setNow(now);
