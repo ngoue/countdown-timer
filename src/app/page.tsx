@@ -10,11 +10,19 @@ export default function Home() {
 
   const hours = Math.max(endTime?.diff(now, "hours"), 0);
   const minutes = Math.max(endTime?.diff(now, "minutes") - hours * 60, 0);
-  const seconds = Math.max(endTime?.diff(now, "seconds") - hours * 3600 - minutes * 60, 0);
+  const seconds = Math.max(
+    endTime?.diff(now, "seconds") - hours * 3600 - minutes * 60,
+    0
+  );
 
   useEffect(() => {
     setInterval(() => {
-      setNow(dayjs());
+      const now = dayjs();
+      if (now > endTime) {
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      } else {
+        setNow(now);
+      }
     }, 100);
   }, []);
 
