@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {
     setInterval(() => {
       setNow(dayjs());
-    }, 500);
+    }, 100);
   }, []);
 
   return (
